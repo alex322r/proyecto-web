@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+</head>
+<body class="">
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3>Admin<span class="text-primary">Panel</span></h3>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html"><span class="material-icons-sharp">dashboard</span> <h4>Dashboard</h4></a></li>
+                <li><a href="usuarios.html"><span class="material-icons-sharp">group</span> <h4>Usuarios</h4></a></li>
+                <li class="active"><a href="#"><span class="material-icons-sharp">receipt_long</span> <h4>Auditoría</h4></a></li>
+                <li><a href="#"><span class="material-icons-sharp">error_outline</span> <h4>Errores</h4></a></li>
+                <li><a href="configuracion.html"><span class="material-icons-sharp">settings</span> <h4>Configuración</h4></a></li>
+                <li><a href="#"><span class="material-icons-sharp">logout</span> <h4>Salir</h4></a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+    <header class="main-header">
+        <h1>Registro de Auditoría</h1>
+        <div class="header-actions">
+            <div class="theme-toggler">
+                <span class="material-icons-sharp active">light_mode</span>
+                <span class="material-icons-sharp">dark_mode</span>
+            </div>
+            <p>Bienvenido, Administrador</p>
+        </div>
+    </header>
+
+    <div class="page-actions">
+        <div class="filter-group">
+            <input type="date" class="form-input">
+            <select class="form-input">
+                <option>Filtrar por acción...</option>
+                <option>INICIO_SESION</option>
+                <option>CREAR_USUARIO</option>
+                <option>ELIMINAR_USUARIO</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="widget-card full-width">
+         <h3 class="widget-title">Eventos del Sistema</h3>
+         <div class="widget-content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Usuario</th>
+                        <th>Acción</th>
+                        <th>Detalles</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>16/10/2025 13:05:12</td>
+                        <td>admin@sistema.com</td>
+                        <td><span class="log-tag log-delete">ELIMINAR_USUARIO</span></td>
+                        <td>Usuario 'juanperez' fue eliminado.</td>
+                    </tr>
+                    <tr>
+                        <td>16/10/2025 12:45:30</td>
+                        <td>ana.garcia@example.com</td>
+                        <td><span class="log-tag log-update">EDITAR_PERFIL</span></td>
+                        <td>Actualizó su nombre de perfil.</td>
+                    </tr>
+                    <tr>
+                        <td>16/10/2025 12:40:01</td>
+                        <td>carlos.ruiz@example.com</td>
+                        <td><span class="log-tag log-login">INICIO_SESION</span></td>
+                        <td>Inicio de sesión exitoso desde IP 192.168.1.10</td>
+                    </tr>
+                </tbody>
+            </table>
+         </div>
+    </div>
+</main>
+       
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+<style>
+    /* --- Variables Globales --- */
+
+</style>
+
+<script>
+    const themeToggler = document.querySelector('.theme-toggler');
+
+themeToggler.addEventListener('click', () => {
+    // Alterna la clase del tema oscuro en el body
+    document.body.classList.toggle('dark-theme-variables');
+
+    // Alterna el icono activo (sol/luna)
+    themeToggler.querySelector('span:nth-child(1)').classList.toggle('active');
+    themeToggler.querySelector('span:nth-child(2)').classList.toggle('active');
+});
+</script>
+</html>

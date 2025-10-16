@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesion</title>
+</head>
+<body>
+    <style>
+
+        :root {
+            --bg: #f4f7fc;               /* fondo base muy claro */
+            --sidebar-bg: #ffffff;       /* fondo del menú blanco */
+            --card-bg: #ffffff;          /* tarjetas blancas */
+            --text: #1a202c;             /* texto principal oscuro */
+            --muted: #718096;            /* texto secundario grisáceo */
+            --border: #e2e8f0;           /* bordes sutiles y claros */
+            --accent: #008c5c;           /* verde vibrante (menos neón) */
+            --accent2: #007ace;          /* azul clásico y fuerte */
+            --danger: #e53e3e;           /* rojo de alerta */
+            --radius: 10px;
+            --shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+    
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        input {
+            
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--accent2);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: var(--danger);
+        }
+
+        .input-container {
+    position: relative; 
+    width: 300px;
+}
+
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    outline: none; /* Quitamos el borde al hacer foco */
+    background-color: transparent; /* Fondo transparente para ver el label detrás */
+    box-sizing: border-box; /* Para que el padding no afecte el ancho total */
+}
+
+.input-label {
+    position: absolute; /* Se posiciona relativo al .input-container */
+    top: 10px;
+    left: 10px;
+    font-size: 16px;
+    color: #aaa;
+    pointer-events: none; /* Permite hacer clic "a través" del label al input */
+    transition: all 0.2s ease-in-out; /* La animación suave */
+}
+
+.input-field:focus + .input-label,
+.input-field:not(:placeholder-shown) + .input-label {
+    top: -10px; /* Mueve el label hacia arriba */
+    left: 8px;
+    font-size: 12px; /* Lo hace más pequeño */
+    color: #007bff; /* Cambia de color para dar feedback */
+    background-color: #f0f2f5; /* Mismo color del fondo para "cortar" el borde */
+    padding: 0 5px;
+}
+
+
+.input-field:focus {
+    border-color: #007bff;
+}
+    </style>
+    <h1>Iniciar sesion</h1>
+    <form action="dashboard.html" method="post">
+
+        <div class="input-container">
+        <input class="input-field" placeholder=" " type="text" id="username" name="username" required>
+        <label class="input-label" for="username">Usuario:</label>
+
+        </div>
+
+        <br>
+        <div class="input-container" class="floating-label">
+        <input class="input-field" placeholder=" " type="password" id="password" name="password" required>
+        <label class="input-label" for="password">Contraseña:</label>
+
+        </div>
+        <br>
+        <p><a href="#">¿Olvidaste tu contraseña?</a></p>
+    
+        <button type="submit">Iniciar sesión</button>
+    </form>
+
+    <footer>
+        <p> Todos los derechos reservados &copy; 2025</p>
+    </footer>
+
+    
+    
+</body>
+</html>

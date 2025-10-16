@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Prototipo - Consultorio Psicológico (SPA)</title>
+
+  <!-- Fuente (opcional): Inter desde Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Enlace al CSS externo -->
+  <link rel="stylesheet" href="styles.css">
+  <script src="index.js" defer></script>
+</head>
+<body>
+  <div class="app" id="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" role="navigation" aria-label="Main sidebar">
+      <div class="brand">
+        <div class="logo">AV</div>
+        <div>
+          <h1>Avance</h1>
+          <div style="font-size:12px;color:var(--muted)">Gestión Clínica</div>
+        </div>
+      </div>
+
+      <nav class="nav" id="menu">
+        <div class="nav-item active" data-target="dashboard"><div class="nav-icon">D</div><div>Dashboard</div></div>
+        <div class="nav-item" data-target="pacientes"><div class="nav-icon">P</div><div>Pacientes</div></div>
+        <div class="nav-item" data-target="agenda"><div class="nav-icon">C</div><div>Agenda</div></div>
+        <div class="nav-item" data-target="pagos"><div class="nav-icon">$</div><div>Pagos / Caja</div></div>
+        <div class="nav-item" data-target="planes"><div class="nav-icon">S</div><div>Planes y Seguros</div></div>
+        <div class="nav-item" data-target="empleados"><div class="nav-icon">E</div><div>Empleados</div></div>
+        <div class="nav-item" data-target="reportes"><div class="nav-icon">R</div><div>Reportes</div></div>
+        <div class="nav-item" data-target="config"><div class="nav-icon">⚙</div><div>Configuración</div></div>
+      </nav>
+
+      <div class="sidebar-footer">© 2025 Avance • Sistema</div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main" role="main">
+      <header class="topbar">
+        <div class="page-title">
+          <h2 id="pageTitle">Dashboard</h2>
+          <span id="pageSubtitle">Resumen general</span>
+        </div>
+        <div class="userbox">
+          <div style="text-align:right">
+            <div style="font-weight:700">Luis Alejos</div>
+            <div style="font-size:12px;color:var(--muted)">Administrador</div>
+          </div>
+          <div class="avatar">LA</div>
+        </div>
+      </header>
+
+      <section class="content">
+        <!-- DASHBOARD VIEW -->
+        <div id="dashboard" class="view active" role="region" aria-label="Dashboard">
+          <div class="grid">
+            <div class="card kpi">
+              <div>
+                <div class="label">Citas hoy</div>
+                <div class="value">8</div>
+              </div>
+              <div style="font-size:28px;color:var(--accent)">📅</div>
+            </div>
+            <div class="card kpi">
+              <div>
+                <div class="label">Pacientes activos</div>
+                <div class="value">124</div>
+              </div>
+              <div style="font-size:28px;color:#0ea5a4">👥</div>
+            </div>
+            <div class="card kpi">
+              <div>
+                <div class="label">Ingresos del día</div>
+                <div class="value">S/ 1,240</div>
+              </div>
+              <div style="font-size:28px;color:#f59e0b">💳</div>
+            </div>
+          </div>
+
+          <div class="grid" style="grid-template-columns:2fr 1fr">
+            <div class="card">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+                <strong>Próximas citas</strong>
+                <button class="btn ghost" onclick="goTo('agenda')">Ver agenda</button>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th>Hora</th><th>Paciente</th><th>Psicólogo</th><th>Estado</th></tr></thead>
+                  <tbody>
+                    <tr><td>09:00</td><td>Luis alejos</td><td>Dra. Rojas</td><td>Confirmada</td></tr>
+                    <tr><td>09:40</td><td>Alexis Rodriguez</td><td>Dr. Silva</td><td>Pendiente</td></tr>
+                    <tr><td>10:30</td><td>William </td><td>Dra. Rojas</td><td>Asistió</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div>
+              <div class="card" style="margin-bottom:12px">
+                <strong>Acciones rápidas</strong>
+                <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+                  <button class="btn" onclick="goTo('pacientes')">+ Nuevo Paciente</button>
+                  <button class="btn ghost" onclick="goTo('agenda')">Agendar cita</button>
+                  <button class="btn ghost" onclick="goTo('pagos')">Registrar pago</button>
+                </div>
+              </div>
+
+              <div class="card">
+                <strong>Notificaciones</strong>
+                <div style="font-size:13px;color:var(--muted);margin-top:8px">No hay notificaciones nuevas.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PACIENTES VIEW -->
+        <div id="pacientes" class="view" role="region" aria-label="Pacientes">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+            <div>
+              <h3 style="margin:0">Pacientes</h3>
+              <div style="font-size:13px;color:var(--muted)">Buscar, crear y administrar pacientes</div>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center">
+              <input id="buscarPaciente" placeholder="Buscar por nombre o DNI" style="padding:8px 10px;border-radius:8px;border:1px solid var(--border);min-width:260px" />
+              <button class="btn" onclick="openNewPatient()">+ Nuevo Paciente</button>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>#</th><th>Nombre completo</th><th>DNI</th><th>Plan</th><th>Últ. cita</th><th>Acciones</th></tr></thead>
+              <tbody id="patientsTable">
+                <tr>
+                  <td>1</td>
+                  <td>Alexis Rodriguez</td>
+                  <td>87654321</td>
+                  <td>Plan 10 sesiones</td>
+                  <td>2025-10-02</td>
+                  <td><button class="btn ghost" onclick="viewProfile(1)">Ver</button></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>William</td>
+                  <td>71234567</td>
+                  <td>-</td>
+                  <td>2025-09-28</td>
+                  <td><button class="btn ghost" onclick="viewProfile(2)">Ver</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- AGENDA VIEW -->
+        <div id="agenda" class="view" role="region" aria-label="Agenda">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+            <div>
+              <h3 style="margin:0">Agenda de Citas</h3>
+              <div style="font-size:13px;color:var(--muted)">Vista semanal / mensual</div>
+            </div>
+            <div>
+              <button class="btn" onclick="openNewAppointment()">+ Agendar cita</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <strong>Calendario (vista simplificada)</strong>
+            <div style="margin-top:10px;color:var(--muted)">Este prototipo no integra calendario real; aquí se muestra una vista mock de la semana.</div>
+            <div style="display:flex;gap:12px;margin-top:12px">
+              <div style="flex:1;background:#f3f4f7;padding:12px;border-radius:8px;border:1px solid var(--border)">
+                <div style="font-weight:700;margin-bottom:8px">Lunes</div>
+                <div style="padding:8px 6px;border-radius:6px;background:#027515d8;border:1px dashed #e6eef9">09:00 - Juan Pérez - Dra. Rojas</div>
+                <div style="padding:8px 6px;border-radius:6px;background:#fff;margin-top:8px;border:1px dashed #e6eef9">11:00 - María T. - Dr. Silva</div>
+              </div>
+              <div style="flex:1;background:#fbfcff;padding:12px;border-radius:8px;border:1px solid var(--border)">
+                <div style="font-weight:700;margin-bottom:8px">Martes</div>
+                <div style="padding:8px 6px;border-radius:6px;background:#fff;border:1px dashed #e6eef9">09:30 - Carlos D. - Dra. Rojas</div>
+              </div>
+              <div style="flex:1;background:#fbfcff;padding:12px;border-radius:8px;border:1px solid var(--border)">
+                <div style="font-weight:700;margin-bottom:8px">Miércoles</div>
+                <div style="padding:8px 6px;border-radius:6px;background:#fff;border:1px dashed #e6eef9">10:00 - Ana L. - Dr. Silva</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAGOS VIEW -->
+      <div id="pagos" class="view" role="region" aria-label="Pagos">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+            <div>
+              <h3 style="margin:0">Pagos / Caja</h3>
+              <div style="font-size:13px;color:var(--muted)">Registrar y consultar pagos</div>
+            </div>
+            <div><button class="btn" onclick="openPaymentModal()">+ Registrar pago</button></div>
+          </div>
+
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <strong>Transacciones recientes</strong>
+              <div style="font-size:13px;color:var(--muted)">Caja abierta: S/ 200.00</div>
+            </div>
+            <div style="margin-top:12px">
+              <table>
+                <thead><tr><th>Fecha</th><th>Paciente</th><th>Concepto</th><th>Monto</th><th>Método</th></tr></thead>
+                <tbody>
+                  <tr><td>2025-10-10</td><td>Juan Pérez</td><td>Sesión</td><td>S/ 120.00</td><td>Tarjeta</td></tr>
+                  <tr><td>2025-10-10</td><td>María Torres</td><td>Plan 5 sesiones</td><td>S/ 450.00</td><td>Transferencia</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- PLANES VIEW -->
+        <div id="planes" class="view" role="region" aria-label="Planes">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+            <div>
+              <h3 style="margin:0">Planes y Seguros</h3>
+              <div style="font-size:13px;color:var(--muted)">Administrar planes y convenios</div>
+            </div>
+            <div><button class="btn" onclick="openNewPlan()">+ Nuevo plan</button></div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+            <div class="card">
+              <strong>Plan 10 sesiones</strong>
+              <div style="color:var(--muted);margin-top:6px">S/ 900 • Vigencia 6 meses</div>
+              <div style="margin-top:12px"><button class="btn ghost">Editar</button></div>
+            </div>
+
+            <div class="card">
+              <strong>Plan 5 sesiones</strong>
+              <div style="color:var(--muted);margin-top:6px">S/ 500 • Vigencia 3 meses</div>
+              <div style="margin-top:12px"><button class="btn ghost">Editar</button></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EMPLEADOS VIEW -->
+        <div id="empleados" class="view" role="region" aria-label="Empleados">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+            <div>
+              <h3 style="margin:0">Empleados</h3>
+              <div style="font-size:13px;color:var(--muted)">Psychólogos, Recepcionistas y Cajeros</div>
+            </div>
+            <div><button class="btn" onclick="openNewEmployee()">+ Nuevo empleado</button></div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>#</th><th>Nombre</th><th>Cargo</th><th>Teléfono</th><th>Acciones</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>Dra. María Rojas</td><td>Psicólogo</td><td>987654321</td><td><button class="btn ghost">Editar</button></td></tr>
+                <tr><td>2</td><td>Diego Ramos</td><td>Cajero</td><td>987111222</td><td><button class="btn ghost">Editar</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- REPORTES VIEW -->
+        <div id="reportes" class="view" role="region" aria-label="Reportes">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+            <div><h3 style="margin:0">Reportes</h3><div style="font-size:13px;color:var(--muted)">Generar reportes y exportar</div></div>
+            <div><button class="btn">Exportar CSV</button></div>
+          </div>
+          <div class="card">
+            <div style="display:flex;gap:12px">
+              <div style="flex:1">
+                <label style="display:block;font-weight:600;margin-bottom:6px">Rango de fechas</label>
+                <input type="date" style="padding:8px;border-radius:8px;border:1px solid var(--border)" />
+              </div>
+              <div style="flex:1">
+                <label style="display:block;font-weight:600;margin-bottom:6px">Tipo</label>
+                <select style="padding:8px;border-radius:8px;border:1px solid var(--border)"><option>Financiero</option><option>Pacientes</option></select>
+              </div>
+              <div style="flex:1;display:flex;align-items:end;justify-content:flex-end">
+                <button class="btn">Generar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONFIG VIEW -->
+        <div id="config" class="view" role="region" aria-label="Configuración">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+            <div><h3 style="margin:0">Configuración</h3><div style="font-size:13px;color:var(--muted)">Ajustes del sistema</div></div>
+          </div>
+          <div class="card">
+            <strong>Usuarios y roles</strong>
+            <div style="margin-top:8px;color:var(--muted)">Gestiona usuarios del sistema (no hay operaciones reales en este prototipo)</div>
+          </div>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+  <!-- Simple modals & JS functions (non-persistent prototypes) -->
+  <script>
+  </script>
+</body>
+</html>

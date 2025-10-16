@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+</head>
+<body class="">
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3>Admin<span class="text-primary">Panel</span></h3>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html"><span class="material-icons-sharp">dashboard</span> <h4>Dashboard</h4></a></li>
+                <li class="active"><a href="#"><span class="material-icons-sharp">group</span> <h4>Usuarios</h4></a></li>
+                <li><a href="auditoria.html"><span class="material-icons-sharp">receipt_long</span> <h4>Auditoría</h4></a></li>
+                <li><a href="#"><span class="material-icons-sharp">error_outline</span> <h4>Errores</h4></a></li>
+                <li><a href="configuracion.html"><span class="material-icons-sharp">settings</span> <h4>Configuración</h4></a></li>
+                <li><a href="#"><span class="material-icons-sharp">logout</span> <h4>Salir</h4></a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <dialog id="addUserDialog" class="dialog">
+                <form method="dialog" class="dialog-form">
+                    <label for="">
+                        <h2>Añadir Nuevo Usuario</h2>
+                        <div class="form-group">
+                            <label for="nombre">Nombre Completo</label>
+                            <input type="text" id="nombre" class="form-input full-width" placeholder="Ej: Juan Pérez">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" id="email" class="form-input full-width" placeholder="Ej: juan.perez@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="rol">Rol</label>
+                            <select id="rol" class="form-input full-width">
+                                <option value="admin">Admin</option>
+                                <option value="editor">Editor</option>
+                                <option value="viewer">Visitante</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="estado">Estado</label>
+                            <select id="estado" class="form-input full-width">
+                                <option value="active">Activo</option>
+                                <option value="inactive">Inactivo</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn-secondary" type="reset">Cancelar</button>
+                            <button class="btn btn-primary" type="submit">Guardar Usuario</button>
+                        </div>
+
+                    </label>
+                </form>
+            </dialog>
+    <header class="main-header">
+        <h1>Gestión de Usuarios</h1>
+        <div class="header-actions">
+            <div class="theme-toggler">
+                <span class="material-icons-sharp active">light_mode</span>
+                <span class="material-icons-sharp">dark_mode</span>
+            </div>
+            <p>Bienvenido, Administrador</p>
+        </div>
+    </header>
+
+    <div class="page-actions">
+        <div class="search-bar">
+            <span class="material-icons-sharp">search</span>
+            <input type="search" placeholder="Buscar usuario por nombre o email...">
+        </div>
+        <button class="btn btn-primary">
+            <span class="material-icons-sharp">add</span>
+            Añadir Usuario
+        </button>
+    </div>
+
+    <div class="widget-card full-width">
+         <h3 class="widget-title">Todos los Usuarios</h3>
+         <div class="widget-content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Rol</th>
+                        <th>Estado</th>
+                        <th>Fecha de Registro</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ana García</td>
+                        <td>ana.garcia@example.com</td>
+                        <td>Editor</td>
+                        <td><span class="status active">Activo</span></td>
+                        <td>16/10/2025</td>
+                        <td class="action-buttons">
+                            <a href="#" class="text-primary"><span class="material-icons-sharp">edit</span></a>
+                            <a href="#" class="text-danger"><span class="material-icons-sharp">delete</span></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Carlos Ruiz</td>
+                        <td>carlos.ruiz@example.com</td>
+                        <td>Visitante</td>
+                        <td><span class="status active">Activo</span></td>
+                        <td>16/10/2025</td>
+                        <td class="action-buttons">
+                            <a href="#" class="text-primary"><span class="material-icons-sharp">edit</span></a>
+                            <a href="#" class="text-danger"><span class="material-icons-sharp">delete</span></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Luisa Fernandez</td>
+                        <td>luisa.f@example.com</td>
+                        <td>Visitante</td>
+                        <td><span class="status inactive">Inactivo</span></td>
+                        <td>15/10/2025</td>
+                        <td class="action-buttons">
+                            <a href="#" class="text-primary"><span class="material-icons-sharp">edit</span></a>
+                            <a href="#" class="text-danger"><span class="material-icons-sharp">delete</span></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Jorge Diaz</td>
+                        <td>jorge.d@example.com</td>
+                        <td>Admin</td>
+                        <td><span class="status active">Activo</span></td>
+                        <td>14/10/2025</td>
+                        <td class="action-buttons">
+                            <a href="#" class="text-primary"><span class="material-icons-sharp">edit</span></a>
+                            <a href="#" class="text-danger"><span class="material-icons-sharp">delete</span></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+         </div>
+    </div>
+</main>
+
+        
+        
+    </div>
+
+    <script>
+    const themeToggler = document.querySelector('.theme-toggler');
+
+themeToggler.addEventListener('click', () => {
+    // Alterna la clase del tema oscuro en el body
+    document.body.classList.toggle('dark-theme-variables');
+
+    // Alterna el icono activo (sol/luna)
+    themeToggler.querySelector('span:nth-child(1)').classList.toggle('active');
+    themeToggler.querySelector('span:nth-child(2)').classList.toggle('active');
+});
+
+
+    const addUserButton = document.querySelector('.page-actions .btn-primary');
+    const addUserDialog = document.getElementById('addUserDialog');
+    const cancelBtn = addUserDialog.querySelector('button[type="reset"]');
+
+    
+
+    addUserButton.addEventListener('click', () => {
+        addUserDialog.showModal();
+    });
+
+    cancelBtn.addEventListener('click', () => {
+        addUserDialog.close();
+    });
+</script>
+</body>

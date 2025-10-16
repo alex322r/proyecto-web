@@ -1,0 +1,306 @@
+/* =============================
+   VARIABLES DE COLOR Y ESTILO
+============================= */
+
+
+:root {
+  --bg: #f4f7fc;               /* fondo base muy claro */
+  --sidebar-bg: #ffffff;       /* fondo del menú blanco */
+  --card-bg: #ffffff;          /* tarjetas blancas */
+  --text: #1a202c;             /* texto principal oscuro */
+  --muted: #718096;            /* texto secundario grisáceo */
+  --border: #e2e8f0;           /* bordes sutiles y claros */
+  --accent: #008c5c;           /* verde vibrante (menos neón) */
+  --accent2: #007ace;          /* azul clásico y fuerte */
+  --danger: #e53e3e;           /* rojo de alerta */
+  --radius: 10px;
+  --shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+
+
+
+
+
+/* =============================
+   RESETEO GENERAL
+============================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+section {
+  background-color: var(--bg);
+}
+
+/* =============================
+   LAYOUT PRINCIPAL
+============================= */
+.app {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* =============================
+   SIDEBAR (MENÚ LATERAL)
+============================= */
+.sidebar {
+  width: 250px;
+  background: linear-gradient(180deg, #fef1e2 0%, #f5f5f8 100%);
+  border-right: 2px solid var(--accent2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  box-shadow: inset -2px 0 20px rgba(0,255,153,0.1);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+  .logo {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  font-weight: 800;
+  box-shadow: 0 0 20px var(--accent);
+  animation: pulseLogo 3s infinite ease-in-out;
+}
+
+
+.nav {
+  margin-top: 40px;
+  flex: 1;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  color: var(--accent2);
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-item:hover {
+  background: rgba(0,255,153,0.1);
+  color: var(--accent);
+  text-shadow: 0 0 8px var(--accent);
+}
+
+.nav-item.active {
+  background: var(--accent2);
+  color: #000;
+  font-weight: 600;
+  box-shadow: 0 0 10px var(--accent);
+}
+
+.sidebar-footer {
+  font-size: 12px;
+  text-align: center;
+  color: var(--muted);
+  opacity: 0.8;
+}
+
+/* =============================
+   MAIN AREA
+============================= */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: radial-gradient(circle at top left, #001a10 0%, #000000 90%);
+}
+
+/* TOPBAR */
+.topbar {
+  background: var(--bg);
+  border-bottom: 1px solid var(--accent2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  box-shadow: 0 2px 10px rgba(0,255,153,0.1);
+}
+
+.page-title h2 {
+  color: var(--accent2);
+  text-shadow: 0 0 8px var(--accent2);
+}
+
+.page-title span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* USUARIO SUPERIOR */
+.userbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  box-shadow: 0 0 12px var(--accent);
+}
+
+/* =============================
+   CONTENIDO PRINCIPAL
+============================= */
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.view {
+  display: none;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.view.active {
+  display: block;
+}
+
+/* Tarjetas y cuadros */
+.card {
+  background: var(--card-bg);
+  padding: 16px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid #1e262a;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 15px rgba(0,255,153,0.25);
+}
+
+.grid {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+/* KPI CARDS */
+.kpi {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, rgba(0,255,153,0.1), rgba(0,198,255,0.1));
+  border: 1px solid rgba(0,255,153,0.3);
+}
+
+.label {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.value {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--accent2);
+}
+
+/* BOTONES */
+.btn {
+  background: var(--accent2);
+  color: #000;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: var(--accent2);
+  color: #fff;
+  box-shadow: 0 0 8px var(--accent2);
+}
+
+.btn.ghost {
+  background: transparent;
+  border: 1px solid var(--accent2);
+  color: var(--accent2);
+}
+
+.btn.ghost:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+/* TABLAS */
+.table-wrap {
+  overflow-x: auto;
+  background: rgba(0,255,153,0.02);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+th {
+  background: rgba(0,255,153,0.05);
+  color: var(--accent);
+  font-size: 13px;
+}
+
+tr:hover td {
+  background: rgba(0,255,153,0.05);
+}
+
+
+
+/* =============================
+   ANIMACIONES
+============================= */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(5px);}
+  to {opacity: 1; transform: translateY(0);}
+}
