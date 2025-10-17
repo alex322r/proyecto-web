@@ -8,10 +8,18 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
 </head>
 <body class="">
+    <!-- Botón menú hamburguesa para móviles -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+        <span class="material-icons-sharp">menu</span>
+    </button>
+
     <div class="dashboard-container">
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <h3>Admin<span class="text-primary">Panel</span></h3>
+                <button class="close-menu" id="closeMenu" aria-label="Cerrar menú">
+                    <span class="material-icons-sharp">close</span>
+                </button>
             </div>
             <ul class="sidebar-menu">
                 <li><a href="dashboard.html"><span class="material-icons-sharp">dashboard</span> <h4>Dashboard</h4></a></li>
@@ -95,15 +103,42 @@
 </style>
 
 <script>
+    // Toggle de tema oscuro/claro
     const themeToggler = document.querySelector('.theme-toggler');
 
-themeToggler.addEventListener('click', () => {
-    // Alterna la clase del tema oscuro en el body
-    document.body.classList.toggle('dark-theme-variables');
+    themeToggler.addEventListener('click', () => {
+        // Alterna la clase del tema oscuro en el body
+        document.body.classList.toggle('dark-theme-variables');
 
-    // Alterna el icono activo (sol/luna)
-    themeToggler.querySelector('span:nth-child(1)').classList.toggle('active');
-    themeToggler.querySelector('span:nth-child(2)').classList.toggle('active');
-});
+        // Alterna el icono activo (sol/luna)
+        themeToggler.querySelector('span:nth-child(1)').classList.toggle('active');
+        themeToggler.querySelector('span:nth-child(2)').classList.toggle('active');
+    });
+
+    // Menú hamburguesa para móviles
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    const closeMenu = document.getElementById('closeMenu');
+
+    menuToggle.addEventListener('click', () => {
+        sidebar.classList.add('active');
+    });
+
+    closeMenu.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+            sidebar.classList.remove('active');
+        }
+    });
+
+    const menuLinks = document.querySelectorAll('.sidebar-menu a');
+    menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+        });
+    });
 </script>
 </html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planes</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+</head>
+<body class="">
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3>Admin<span class="text-primary">Panel</span></h3>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active"><a href="#"><span class="material-icons-sharp">dashboard</span> <h4>Planes</h4></a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <dialog id="addUserDialog" class="dialog">
+                <form method="dialog" class="dialog-form">
+                    <label for="">
+                        <h2>Añadir Nuevo Plan</h2>
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" class="form-input full-width" placeholder="">
+                        </div>
+                         <div class="form-group">
+                            <label for="precio">Precio</label>
+                            <input type="text" id="nombre" class="form-input full-width" placeholder="">
+                        </div>
+                         <div class="form-group">
+                            <label for="descripcion">Descripcion</label>
+                            <input type="text" id="nombre" class="form-input full-width" placeholder="">
+                        </div>
+                        
+                        
+                        
+                        <div class="form-actions">
+                            <button class="btn btn-secondary" type="reset">Cancelar</button>
+                            <button class="btn btn-primary" type="submit">Guardar Usuario</button>
+                        </div>
+
+                    </label>
+                </form>
+            </dialog>
+            <header class="main-header">
+                <h1>Gestion de Planes</h1>
+                <div class="header-actions">
+                    <p>Bienvenido, Administrador</p>
+                </div>
+            </header>
+
+            <div class="widgets-grid planes">
+                
+                <div class="widget-card plan">
+                    <h3 class="widget-title">Plan 20</h3>
+                    <div class="widget-content">
+                        <p class="metric">  200 PEN/mes</p>
+                        <p class="include">incluye 5 sesiones al mes</p>
+                    </div>
+                </div>
+
+                <div class="widget-card plan">
+                    <h3 class="widget-title">Plan 10</h3>
+                    <div class="widget-content">
+                        <p class="metric">100 PEN/mes</p>
+                        <p class="include">incluye 2 sesiones al mes</p>
+                    </div>
+                </div>
+
+                
+            <div style="margin-top: 20px;">
+                <button class="btn btn-primary" id="btn-add-plan">
+                Agregar Nuevo Plan
+                </button>
+            </div>
+            
+        </main>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+<style>
+    /* --- Variables Globales --- */
+
+</style>
+
+<script>
+    
+
+    const addPlanButton = document.getElementById('btn-add-plan');
+    const addUserDialog = document.getElementById('addUserDialog');
+    const cancelBtn = addUserDialog.querySelector('button[type="reset"]');
+
+    
+
+    addPlanButton.addEventListener('click', () => {
+        addUserDialog.showModal();
+    });
+
+    cancelBtn.addEventListener('click', () => {
+        addUserDialog.close();
+    });
+</script>
+</html>
